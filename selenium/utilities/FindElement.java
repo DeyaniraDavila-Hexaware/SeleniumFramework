@@ -1,6 +1,9 @@
 package hex.selenium.utilities;
 
+import java.util.Set;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -95,5 +98,183 @@ public class FindElement {
 		}catch(Exception ex){
 			System.out.println(ex.getMessage());
 		}
+	}
+	
+	public static void SwitchToWindows(WebDriver driver) {
+		String currWin;
+		currWin = driver.getWindowHandle();
+		System.out.println(currWin);
+		Set<String> handles = driver.getWindowHandles();
+		String windowChild;
+		handles.remove(currWin);
+		
+		for(String winHandle :handles){
+
+			if(winHandle != currWin){
+			 windowChild = winHandle;
+			driver.switchTo().window(windowChild);
+			System.out.println("Current window : " + windowChild);
+			}
+		}
+	}
+	
+	
+	public static WebElement SwitchToFrame(WebDriver driver, WebElement element) {
+		
+		if(element != null) {
+			driver.switchTo().frame(element);
+		}
+		
+		return element;
+	}
+	
+	public static WebDriver SwitchToDefaultContent(WebDriver driver) {
+		try 
+		{
+			driver.switchTo().defaultContent();
+			
+		}catch(Exception ex) {
+			System.out.println(ex.getMessage());
+		}
+		return driver;
+	}
+	
+	
+	public static Actions mouseOver(WebDriver driver, WebElement element) {
+		try {
+		action = new Actions(driver);
+		action.moveToElement(element).build().perform();
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		return action;
+	}
+	
+	public static Actions mouseOverandClick(WebDriver driver, WebElement element, WebElement elementToClick) {
+		
+		action = new Actions(driver);
+		action.moveToElement(element).click(elementToClick).perform();
+		
+		return action;
+	}
+	
+	
+	public static Actions DragandDrop(WebDriver driver, WebElement element, WebElement otherElement) {
+		
+		action = new Actions(driver);
+		action.clickAndHold(element)
+		.release(otherElement)
+		.build();
+		
+		return action;
+	}
+	
+	// More actions can be added
+	public static Actions ActionsHanlder(WebDriver driver, WebElement element, String actionName) {
+		
+		action = new Actions(driver);
+		
+		switch(actionName) {
+		
+		case "DoubleClick":
+			action.moveToElement(element).doubleClick().perform();
+			break;
+		}
+		
+		
+		return action;
+	}
+	
+	
+	public static void scroll(WebDriver driver,WebElement element, String value) {
+		
+		try 
+		{
+			if(element != null) {
+				((JavascriptExecutor)driver).executeScript("window.scrollBy(" + value + ");", element);
+			}else {
+				((JavascriptExecutor)driver).executeScript("window.scrollBy(" + value + ");");
+			}
+		
+		}catch(Exception ex) {
+			System.out.println(ex.getMessage());
+		}
+		
+	}
+
+	
+	
+	public static void AcceptAlert(WebDriver driver) {
+		try 
+		{
+			driver.switchTo().alert().accept();
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	public static void DissmissAlert(WebDriver driver) {
+		
+		try 
+		{
+			driver.switchTo().alert().dismiss();
+			
+		}catch(Exception ex) {
+			System.out.println(ex.getMessage());
+		}
+		
+	}
+	
+	public static void AcceptalertifExist(WebDriver driver) {
+
+		try {
+			if(isAlertPresent(driver)) {
+				driver.switchTo().alert().accept();
+			}
+		}catch(Exception ex) {
+			System.out.println(ex.getMessage());
+		}
+	}
+	
+	public static String GetAlertText(WebDriver driver) {
+		String result = "";
+		try 
+		{
+			result = driver.switchTo().alert().getText();
+			
+			
+		}catch (Exception ex) {
+			System.out.println(ex.getMessage());
+		}
+		
+		return result;
+	}
+	
+	public static boolean isAlertPresent(WebDriver driver) {
+		try 
+		{
+			driver.switchTo().alert();
+			return true;
+			
+		}catch(Exception ex) {
+			return false;
+		}
+	}
+	
+	public static boolean isAttributePresent(WebElement element, String attribute) {
+		
+		Boolean result = false;
+		
+		try 
+		{
+			String value = element.getAttribute(attribute);
+			if(value != null) {
+				return true;
+			}
+		}catch(Exception ex) {
+			System.out.println(ex.getMessage());
+		}
+		return result;
 	}
 }
