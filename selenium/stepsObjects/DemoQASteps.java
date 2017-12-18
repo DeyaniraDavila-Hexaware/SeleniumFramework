@@ -46,5 +46,65 @@ public class DemoQASteps {
 			
 			return element;
 		}
+		
+		public static WebElement CheckHobbyDance(WebDriver driver){
+			WebElement element = null;
+			element = driver.findElement(By.xpath("//*[@name='checkbox_5[]' and @value='dance']"));
+	
+			return element;
+			
+		}
+		
+		public static WebElement PhoneNumberTextBox(WebDriver driver){
+			WebElement element = null;
+			element = driver.findElement(By.id("phone_9"));
+	
+			return element;
+			
+		}
+		
+		public static WebElement UsernameTextBox(WebDriver driver){
+			WebElement element = null;
+			element = driver.findElement(By.id("username"));
+	
+			return element;
+			
+		}
+		
+		public static WebElement EmailTextBox(WebDriver driver){
+			WebElement element = null;
+			element = driver.findElement(By.name("e_mail"));
+	
+			return element;
+			
+		}
+		
+		public static WebElement PasswordTextBox(WebDriver driver){
+			WebElement element = null;
+			element = driver.findElement(By.name("password"));
+	
+			return element;
+			
+		}
+		
+		public static WebElement ConfirmPasswordTextBox(WebDriver driver){
+			WebElement element = null;
+			element = driver.findElement(By.id("confirm_password_password_2"));
+	
+			return element;
+			
+		}
+		
+		public static boolean VerifyPasswordLabelSuccessfull(WebDriver driver){
+			WebElement element = null;
+			element = driver.findElement(By.id("piereg_passwordStrength"));
+	
+			boolean returnSuccessPassword = ((element.getText().toString().equalsIgnoreCase("Very weak")) || 
+											(element.getText().toString().equalsIgnoreCase("Weak"))
+											|| (element.getText().toString().equalsIgnoreCase("Strong")));
+			
+			return returnSuccessPassword;
+			
+		}
 	}
 }

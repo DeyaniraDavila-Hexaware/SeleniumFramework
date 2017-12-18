@@ -1,6 +1,6 @@
 package hex.selenium.execution;
 
-import hex.selenium.testCases.DemoQARegistration;
+import hex.selenium.testCases.*;
 
 public class Main {
 
@@ -12,7 +12,7 @@ public class Main {
 			
 			// Call DemoQARegistration script
 			DemoQARegistration demoQARegistration = new DemoQARegistration("Chrome");
-			//.
+			GoogleSearch googleSearch = new GoogleSearch("Firefox");
 			//.
 			//.
 			//.
