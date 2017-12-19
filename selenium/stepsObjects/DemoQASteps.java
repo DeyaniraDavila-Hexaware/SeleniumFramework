@@ -3,6 +3,7 @@ package hex.selenium.stepsObjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 public class DemoQASteps {
 	
@@ -95,6 +96,16 @@ public class DemoQASteps {
 			
 		}
 		
+		public static String VerifyRequiredEmail(WebDriver driver){
+			WebElement eMailelement = null;
+			eMailelement = driver.findElement(By.xpath("//*[@id='pie_register']/li[8]/div/div/span"));
+			
+			if(eMailelement.isDisplayed())
+				return "Email is required";
+			else
+				return "";
+		}
+		
 		public static boolean VerifyPasswordLabelSuccessfull(WebDriver driver){
 			WebElement element = null;
 			element = driver.findElement(By.id("piereg_passwordStrength"));
@@ -106,5 +117,7 @@ public class DemoQASteps {
 			return returnSuccessPassword;
 			
 		}
+		
+		
 	}
 }

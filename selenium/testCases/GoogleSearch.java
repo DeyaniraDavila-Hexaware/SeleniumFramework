@@ -1,5 +1,6 @@
 package hex.selenium.testCases;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 
 import hex.selenium.stepsObjects.DemoQASteps;
@@ -42,6 +43,8 @@ public class GoogleSearch {
 				
 			}
 			
+			Alert alert = driver.switchTo().alert();
+			alert.accept();
 			
 			driver.quit();
 		}catch(Exception ex){

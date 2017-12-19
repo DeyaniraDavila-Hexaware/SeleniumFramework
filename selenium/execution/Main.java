@@ -8,11 +8,13 @@ public class Main {
 		// TODO Auto-generated method stub
 
 		
-		try{
+		try{			
 			
 			// Call DemoQARegistration script
-			DemoQARegistration demoQARegistration = new DemoQARegistration("Chrome");
-			GoogleSearch googleSearch = new GoogleSearch("Firefox");
+			//DemoQARegistration demoQARegistration = new DemoQARegistration("Chrome");
+			//GoogleSearch googleSearch = new GoogleSearch("Firefox");
+			
+			ToolsQAPractice toolsQA = new ToolsQAPractice("Chrome");
 			//.
 			//.
 			//.

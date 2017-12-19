@@ -35,32 +35,34 @@ public class DemoQARegistration {
 			// Iterate data
 			int length = ds.getTotalRows();
 			
-			for(int i = 1; i < length ; i++ ){
+			// Iterate the data
+			for(int row = 1; row < length ; row++ ){
 				// Step 2 Click on Registration
 				DemoQASteps.HomePage.RegistrationButton(driver).click();
 				
-				DemoQASteps.RegistrationPage.FirstNameText(driver).sendKeys(ds.GetLocalDataSheetValue(inputData, i ,"DT_NAME"));
+				
+				DemoQASteps.RegistrationPage.FirstNameText(driver).sendKeys(ds.GetLocalDataSheetValue(inputData, row ,"DT_NAME"));
 				FindElement.Wait(1);
 				
 				// Step 4 Type last name
-				DemoQASteps.RegistrationPage.LastNameText(driver).sendKeys(ds.GetLocalDataSheetValue(inputData, i ,"DT_LASTNAME"));
+				DemoQASteps.RegistrationPage.LastNameText(driver).sendKeys(ds.GetLocalDataSheetValue(inputData, row ,"DT_LASTNAME"));
 				FindElement.Wait(1);
 				
 				DemoQASteps.RegistrationPage.CheckHobbyDance(driver).click();
 				
-				DemoQASteps.RegistrationPage.PhoneNumberTextBox(driver).sendKeys(ds.GetLocalDataSheetValue(inputData, i ,"DT_PHONE"));
+				DemoQASteps.RegistrationPage.PhoneNumberTextBox(driver).sendKeys(ds.GetLocalDataSheetValue(inputData, row ,"DT_PHONE"));
 				FindElement.Wait(1);
 				
-				DemoQASteps.RegistrationPage.UsernameTextBox(driver).sendKeys(ds.GetLocalDataSheetValue(inputData, i ,"DT_USERNAME"));
+				DemoQASteps.RegistrationPage.UsernameTextBox(driver).sendKeys(ds.GetLocalDataSheetValue(inputData, row ,"DT_USERNAME"));
 				FindElement.Wait(1);
 				
-				DemoQASteps.RegistrationPage.EmailTextBox(driver).sendKeys(ds.GetLocalDataSheetValue(inputData, i ,"DT_EMAIL"));
+				DemoQASteps.RegistrationPage.EmailTextBox(driver).sendKeys(ds.GetLocalDataSheetValue(inputData, row ,"DT_EMAIL"));
 				FindElement.Wait(1);
 				
-				DemoQASteps.RegistrationPage.PasswordTextBox(driver).sendKeys(ds.GetLocalDataSheetValue(inputData, i ,"DT_PASSWORD"));
+				DemoQASteps.RegistrationPage.PasswordTextBox(driver).sendKeys(ds.GetLocalDataSheetValue(inputData, row ,"DT_PASSWORD"));
 				FindElement.Wait(1);
 				
-				DemoQASteps.RegistrationPage.ConfirmPasswordTextBox(driver).sendKeys(ds.GetLocalDataSheetValue(inputData, i ,"DT_PASSWORD_CONFIRM"));
+				DemoQASteps.RegistrationPage.ConfirmPasswordTextBox(driver).sendKeys(ds.GetLocalDataSheetValue(inputData, row ,"DT_PASSWORD_CONFIRM"));
 				
 				if(DemoQASteps.RegistrationPage.VerifyPasswordLabelSuccessfull(driver)){
 					// Step 5 Click in submit button
@@ -70,7 +72,7 @@ public class DemoQARegistration {
 					FindElement.Wait(5);
 				}
 				else
-					System.out.println("Failed due password.");
+					System.out.println("Failed due password doesn't match.");
 				
 			}
 			
